@@ -11,8 +11,24 @@ namespace RepoQuiz.Tests.DAL
         //Set up Moq / mock context 
         Mock<StudentContext> mock_context { get; set; }
 
+        StudentRepo repo { get; set; }
 
-        [TestInitialize]
+        //[TestInitialize]
         //mock_context = new Mock<StudentContext>();
+
+        //[TestCleanup]
+        //public void TearDown()
+        //{
+        //    repo = null;
+        //}
+
+        [TestMethod]
+        public void CanCreateModelClassInstance()
+        {
+            StudentRepo repo = new StudentRepo();
+            Assert.IsNotNull(repo);
+        }
+
+
     }
 }
