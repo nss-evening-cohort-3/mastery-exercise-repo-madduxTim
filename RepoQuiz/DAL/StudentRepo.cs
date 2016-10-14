@@ -17,5 +17,10 @@ namespace RepoQuiz.DAL
         {
             Context = _context;
         }
+
+        public List<Student> GetAllStudents()
+        {
+            return Context.Students.ToList();
+        }
     }
 }

@@ -59,6 +59,28 @@ namespace RepoQuiz.Tests.DAL
             Assert.IsNotNull(repo);
         }
 
+        [TestMethod]
+        public void CanCreateInstanceWithMockInitialized()
+        {
+            Assert.IsNotNull(repo);
+        }
 
+        [TestMethod]
+        public void RepoHasContext()
+        {
+            StudentContext actual = repo.Context;
+            Assert.IsInstanceOfType(actual, typeof(StudentContext));
+        }
+
+        [TestMethod]
+        public void StudentDbIsEmpty()
+        {
+            List<Student> all_students = repo.GetAllStudents();
+            all_students.Add(fauxStudent1);
+            all_students.Add(fauxStudent2);
+            int expected = 2;
+            int actual = all_students.Count();
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
