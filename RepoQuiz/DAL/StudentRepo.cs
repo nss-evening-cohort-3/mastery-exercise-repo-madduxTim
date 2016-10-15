@@ -40,5 +40,17 @@ namespace RepoQuiz.DAL
             Student student = Context.Students.FirstOrDefault(s => s.FirstName == student_name || s.LastName == student_name);
             return student;
         }
+
+        public void DeleteStudent(int studentID)
+        {
+            Student student = Context.Students.FirstOrDefault(s => s.StudentID == studentID);
+            Context.Students.Remove(student);
+        }
+
+        public void DeleteStudent(string name)
+        {
+            Student student = Context.Students.FirstOrDefault(s => s.FirstName == name || s.LastName == name);
+            Context.Students.Remove(student);
+        }
     }
 }

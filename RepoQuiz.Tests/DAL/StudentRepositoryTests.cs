@@ -105,13 +105,40 @@ namespace RepoQuiz.Tests.DAL
         }
 
         [TestMethod]
-        public void FinidStudentByFirstNameOrLastName()
+        public void FindStudentByFirstNameOrLastName()
         {
             repo.AddNewStudent(fauxStudent2);
             string student_name = "Jimmy";
             Student expected_student = fauxStudent2;
             Student actual_student = repo.FindStudent(student_name);
             Assert.AreEqual(expected_student, actual_student);
+        }
+
+        [TestMethod]
+        public void RemoveStudentById()
+        {
+            List<Student> fauxMiniRepo = new List<Student>() { fauxStudent1, fauxStudent2, fauxStudent3 };
+            repo.AddNewStudent(fauxStudent1);
+            repo.AddNewStudent(fauxStudent2);
+            repo.AddNewStudent(fauxStudent3);
+            Assert.AreEqual(fauxMiniRepo.Count, repo.GetAllStudents().Count);
+            repo.DeleteStudent(fauxStudent1.StudentID); //my method 
+            fauxMiniRepo.Remove(fauxStudent1); // test against generic collection method 
+            Assert.AreEqual(fauxMiniRepo.Count, repo.GetAllStudents().Count);
+        }
+
+        [TestMethod]
+        public void RemoveStudentByFirstOrLastName()
+        {
+            List<Student> fauxMiniRepo = new List<Student>() { fauxStudent1, fauxStudent2, fauxStudent3 };
+            repo.AddNewStudent(fauxStudent1);
+            repo.AddNewStudent(fauxStudent2);
+            repo.AddNewStudent(fauxStudent3);
+            Assert.AreEqual(fauxMiniRepo.Count, repo.GetAllStudents().Count);
+            string studentName = "Jimmy";
+            repo.DeleteStudent(studentName); //my method 
+            fauxMiniRepo.Remove(fauxStudent1); // test against generic collection method 
+            Assert.AreEqual(fauxMiniRepo.Count, repo.GetAllStudents().Count);
         }
     }
 }
