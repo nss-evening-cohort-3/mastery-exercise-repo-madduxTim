@@ -22,5 +22,23 @@ namespace RepoQuiz.DAL
         {
             return Context.Students.ToList();
         }
+
+        public void AddNewStudent(Student student)
+        {
+            Context.Students.Add(student);
+            Context.SaveChanges();
+        }
+
+        public Student FindStudent(int student_id)
+        {
+            Student student = Context.Students.FirstOrDefault(s => s.StudentID == student_id);
+            return student;
+        }
+
+        public Student FindStudent(string student_name)
+        {
+            Student student = Context.Students.FirstOrDefault(s => s.FirstName == student_name || s.LastName == student_name);
+            return student;
+        }
     }
 }

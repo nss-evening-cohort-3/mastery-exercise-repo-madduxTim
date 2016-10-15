@@ -20,8 +20,8 @@ namespace RepoQuiz.Tests.DAL
 
         //bogus students
         Student fauxStudent1 = new Student { StudentID = 1, FirstName = "Tobey", LastName = "Shmobey", Major = "Economics" };
-        Student fauxStudent2 = new Student { StudentID = 1, FirstName = "Jimmy", LastName = "Shmimmy", Major = "English" };
-        Student fauxStudent3 = new Student { StudentID = 1, FirstName = "Sarah", LastName = "Shmarah", Major = "Engineering" };
+        Student fauxStudent2 = new Student { StudentID = 2, FirstName = "Jimmy", LastName = "Shmimmy", Major = "English" };
+        Student fauxStudent3 = new Student { StudentID = 3, FirstName = "Sarah", LastName = "Shmarah", Major = "Engineering" };
 
         //Add LINQ-queryability to student lists
         public void ConnectMocksToDatastore()
@@ -76,11 +76,42 @@ namespace RepoQuiz.Tests.DAL
         public void StudentDbIsEmpty()
         {
             List<Student> all_students = repo.GetAllStudents();
-            all_students.Add(fauxStudent1);
-            all_students.Add(fauxStudent2);
-            int expected = 2;
+            int expected = 0;
             int actual = all_students.Count();
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void canAddStudentToDatabase()
+        {
+            repo.AddNewStudent(fauxStudent1);
+            List<Student> all_students = repo.GetAllStudents();
+            int expected = 1;
+            int actual = all_students.Count();
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void FindStudentById()
+        {
+            repo.AddNewStudent(fauxStudent1);
+            repo.AddNewStudent(fauxStudent2);
+            repo.AddNewStudent(fauxStudent3);
+            int student_id = 3;
+            int expected_student_id = 3;
+            Student actual_student = repo.FindStudent(student_id);
+            int actual_student_id = actual_student.StudentID;
+            Assert.AreEqual(expected_student_id, actual_student_id);
+        }
+
+        [TestMethod]
+        public void FinidStudentByFirstNameOrLastName()
+        {
+            repo.AddNewStudent(fauxStudent2);
+            string student_name = "Jimmy";
+            Student expected_student = fauxStudent2;
+            Student actual_student = repo.FindStudent(student_name);
+            Assert.AreEqual(expected_student, actual_student);
         }
     }
 }
