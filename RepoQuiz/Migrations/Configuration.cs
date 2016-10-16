@@ -19,11 +19,13 @@ namespace RepoQuiz.Migrations
         {
             NameGenerator name_generator = new NameGenerator();
 
-
+            for (var i = 0; i < 10; i++)
+            {
             context.Students.AddOrUpdate(
-                s => s.LastName, new Models.Student() { FirstName = "Test", LastName="TestLast", Major="Science" }
+                s => s.LastName,
+                new Models.Student() { FirstName = name_generator.CreateFirstName(), LastName = name_generator.CreateLastName(), Major = name_generator.CreateMajor() });
+            }
 
-                );
             // HOW TO MAKE USE OF THIS WITH SEED METHOD... 
             //List<string> student1 = name_generator.studentAssembly();
             //List<string> student2 = name_generator.studentAssembly();

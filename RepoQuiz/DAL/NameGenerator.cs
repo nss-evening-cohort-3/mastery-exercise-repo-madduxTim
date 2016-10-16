@@ -19,13 +19,35 @@ namespace RepoQuiz.DAL
         public List<string> studentAssembly()
         {
             Random rando = new Random();
-            int FirstNameNum = rando.Next(0, FirstNames.Count()-1);
-            int LastNameNum = rando.Next(0, LastNames.Count()-1);
-            int MajorNumber = rando.Next(0, Majors.Count()-1);
+            int FirstNameNum = rando.Next(0, FirstNames.Count() - 1);
+            int LastNameNum = rando.Next(0, LastNames.Count() - 1);
+            int MajorNumber = rando.Next(0, Majors.Count() - 1);
             student.Add(FirstNames[FirstNameNum]);
             student.Add(LastNames[LastNameNum]);
             student.Add(Majors[MajorNumber]);
             return student;
+        }
+
+        public string CreateFirstName()
+        {
+            Random rando = new Random();
+            int FirstNameNum = rando.Next(0, FirstNames.Count() - 1);
+            string FirstName = FirstNames[FirstNameNum];
+            return FirstName;
+        }
+        public string CreateLastName()
+        {
+            Random rando = new Random();
+            int MajorNumber = rando.Next(0, Majors.Count() - 1);
+            string Major = Majors[MajorNumber];
+            return Major;
+        }
+        public string CreateMajor()
+        {
+            Random rando = new Random();
+            int LastNameNum = rando.Next(0, LastNames.Count() - 1);
+            string LastName = LastNames[LastNameNum];
+            return LastName;
         }
     }
 }
