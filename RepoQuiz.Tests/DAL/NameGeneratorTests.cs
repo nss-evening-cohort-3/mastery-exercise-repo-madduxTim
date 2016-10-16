@@ -19,6 +19,8 @@ namespace RepoQuiz.Tests.DAL
         public void CanGenerateStudent()
         {
             var actual = namegenerator.studentAssembly();
+            List<string> student1 = namegenerator.studentAssembly();
+            List<string> student2 = namegenerator.studentAssembly();
             //Dictionary<string, int> expected = new Dictionary<string, int>();
             List<string> expected = new List<string>();
             Assert.IsNotNull(actual);

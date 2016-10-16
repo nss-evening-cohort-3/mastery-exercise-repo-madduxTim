@@ -14,10 +14,10 @@ namespace RepoQuiz.DAL
         public string[] LastNames = new string[17] { "Obama", "Bush", "Clinton", "Reagan", "Carter", "Ford", "Nixon", "Johnson", "Kennedy", "Eisenhower", "Truman", "Roosevelt", "Herbert", "Coolidge", "Harding", "Wilson", "Taft" };
         public string[] Majors = new string[8] { "Economics", "Literature", "Political Science", "Journalism", "Pre-Med", "Physics", "Sociology", "Biology" };
 
-        List<string> student = new List<string>();
 
         public List<string> studentAssembly()
         {
+            List<string> student = new List<string>();
             Random rando = new Random();
             int FirstNameNum = rando.Next(0, FirstNames.Count() - 1);
             int LastNameNum = rando.Next(0, LastNames.Count() - 1);
@@ -38,16 +38,16 @@ namespace RepoQuiz.DAL
         public string CreateLastName()
         {
             Random rando = new Random();
-            int MajorNumber = rando.Next(0, Majors.Count() - 1);
-            string Major = Majors[MajorNumber];
-            return Major;
+            int LastNameNum = rando.Next(0, LastNames.Count() - 1);
+            string LastName = LastNames[LastNameNum];
+            return LastName;
         }
         public string CreateMajor()
         {
             Random rando = new Random();
-            int LastNameNum = rando.Next(0, LastNames.Count() - 1);
-            string LastName = LastNames[LastNameNum];
-            return LastName;
+            int MajorNumber = rando.Next(0, Majors.Count() - 1);
+            string Major = Majors[MajorNumber];
+            return Major;
         }
     }
 }
