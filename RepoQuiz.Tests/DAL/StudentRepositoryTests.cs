@@ -137,8 +137,9 @@ namespace RepoQuiz.Tests.DAL
             Assert.AreEqual(fauxMiniRepo.Count, repo.GetAllStudents().Count);
             string studentName = "Jimmy";
             repo.DeleteStudent(studentName); //my method 
-            fauxMiniRepo.Remove(fauxStudent1); // test against generic collection method 
-            Assert.AreEqual(fauxMiniRepo.Count, repo.GetAllStudents().Count);
+            fauxMiniRepo.Remove(fauxStudent2); // test against generic collection method 
+            Assert.IsFalse(fauxMiniRepo.Contains(fauxStudent2));
+            Assert.IsFalse(repo.GetAllStudents().Contains(fauxStudent2));
         }
     }
 }
