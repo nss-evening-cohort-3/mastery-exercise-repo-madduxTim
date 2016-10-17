@@ -49,13 +49,9 @@ namespace RepoQuiz.Tests.DAL
         {
             NameGenerator namegenerator = new NameGenerator();
             Student actual = namegenerator.studentBuilder();
-            Random test = new Random();
-            int blah = test.Next(0, 100);
-            int boogers = test.Next(0, 100);
-            int jacket = test.Next(0, 100);
-            int barf = test.Next(0, 20);
             Student expected = new Student() { FirstName="Ken", LastName="Bone", Major="Pre-Med" };
             Assert.IsInstanceOfType(expected, actual.GetType());
         }
     }
 }
+

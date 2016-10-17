@@ -15,19 +15,25 @@ namespace RepoQuiz.Migrations
         {
             NameGenerator name_generator = new NameGenerator();
             Student student1 = name_generator.studentBuilder();
-            //List<string> student2 = name_generator.studentAssembly();
-            //List<string> student3 = name_generator.studentAssembly();
-            //List<string> student4 = name_generator.studentAssembly();
-            //List<string> student5 = name_generator.studentAssembly();
+            //Student student2 = name_generator.studentBuilder();
+            //Student student3 = name_generator.studentBuilder();
+            //Student student4 = name_generator.studentBuilder();
+            //Student student5 = name_generator.studentBuilder();
+            //Student student6 = name_generator.studentBuilder();
+            //Student student7 = name_generator.studentBuilder();
+            //Student student8 = name_generator.studentBuilder();
+            //Student student9 = name_generator.studentBuilder();
+            //Student student10 = name_generator.studentBuilder();
 
             context.Students.AddOrUpdate(s => s.LastName, student1);
-                //s => s.LastName,
-                //new Models.Student()
-                //{
-                //    FirstName = name_generator.CreateFirstName(),
-                //    LastName = name_generator.CreateLastName(),
-                //    Major = name_generator.CreateMajor()
-                //});
+            //context.Students.AddOrUpdate(
+            //    s => s.LastName,
+            //    new Student
+            //    {
+            //        FirstName = name_generator.CreateFirstName(),
+            //        LastName = name_generator.CreateLastName(),
+            //        Major = name_generator.CreateMajor()
+            //    });
 
             //  This method will be called after migrating to the latest version.
 
