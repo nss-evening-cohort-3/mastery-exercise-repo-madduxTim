@@ -25,15 +25,16 @@ namespace RepoQuiz.Migrations
             //Student student9 = name_generator.studentBuilder();
             //Student student10 = name_generator.studentBuilder();
 
-            context.Students.AddOrUpdate(s => s.LastName, student1);
-            //context.Students.AddOrUpdate(
-            //    s => s.LastName,
-            //    new Student
-            //    {
-            //        FirstName = name_generator.CreateFirstName(),
-            //        LastName = name_generator.CreateLastName(),
-            //        Major = name_generator.CreateMajor()
-            //    });
+            // I don't get this... 
+            //context.Students.AddOrUpdate(s => s.LastName, student1);
+            context.Students.AddOrUpdate(
+                s => s.LastName,
+                new Student
+                {
+                    FirstName = name_generator.CreateFirstName(),
+                    LastName = name_generator.CreateLastName(),
+                    Major = name_generator.CreateMajor()
+                });
 
             //  This method will be called after migrating to the latest version.
 

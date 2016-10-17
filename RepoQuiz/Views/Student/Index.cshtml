@@ -1,0 +1,34 @@
+﻿@using RepoQuiz.Models;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 50%;
+        text-align: center;
+    }
+    th {
+        text-align: center;
+    }
+</style>
+
+<h2>Students With Presidential-Sounding Names</h2>
+<table>
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Major</th>
+    </tr>
+    @{ foreach (var student in ViewBag.Students)
+            {
+            <tr>
+                <td>@student.FirstName</td>
+                <td>@student.LastName</td>
+                <td>@student.Major</td>
+            </tr>
+        }
+    }
+</table>
+
