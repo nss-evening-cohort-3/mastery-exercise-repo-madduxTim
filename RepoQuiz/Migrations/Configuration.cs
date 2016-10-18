@@ -3,6 +3,7 @@ namespace RepoQuiz.Migrations
     using DAL;
     using System.Data.Entity.Migrations;
     using Models;
+    using System.Threading;
 
     internal sealed class Configuration : DbMigrationsConfiguration<RepoQuiz.DAL.StudentContext>
     {
@@ -14,28 +15,25 @@ namespace RepoQuiz.Migrations
         protected override void Seed(RepoQuiz.DAL.StudentContext context)
         {
             NameGenerator name_generator = new NameGenerator();
-            Student student1 = name_generator.studentBuilder();
-            //Student student2 = name_generator.studentBuilder();
-            //Student student3 = name_generator.studentBuilder();
-            //Student student4 = name_generator.studentBuilder();
-            //Student student5 = name_generator.studentBuilder();
-            //Student student6 = name_generator.studentBuilder();
-            //Student student7 = name_generator.studentBuilder();
-            //Student student8 = name_generator.studentBuilder();
-            //Student student9 = name_generator.studentBuilder();
-            //Student student10 = name_generator.studentBuilder();
-
-            // I don't get this... 
-            //context.Students.AddOrUpdate(s => s.LastName, student1);
-            context.Students.AddOrUpdate(
-                s => s.LastName,
-                new Student
-                {
-                    FirstName = name_generator.CreateFirstName(),
-                    LastName = name_generator.CreateLastName(),
-                    Major = name_generator.CreateMajor()
-                });
-
+            for (var i = 0; i < 10; i++)
+            {
+                context.Students.AddOrUpdate(
+                    s => s.LastName,
+                    new Student
+                    {
+                        FirstName = name_generator.CreateFirstName(),
+                        LastName = name_generator.CreateLastName(),
+                        Major = name_generator.CreateMajor()
+                    });
+                // Since the Random class uses the computer's timestamp to generate a pseudo random
+                // number, it will apply the same one if the timestamp is so close together for each 
+                // iteration of this loop. Therefore, one solution is to slow down the loop like below.
+                // The other solution (exploring), will be to move all the Random classes into one method,
+                // because it is the .Next method that creates a fresh pseudo apparently, not the instantiation
+                //of the Random class as I would have suspected. 
+                Thread.Sleep(1000);
+            }
+            
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
