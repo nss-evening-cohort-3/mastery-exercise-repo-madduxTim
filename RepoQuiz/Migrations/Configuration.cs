@@ -31,7 +31,7 @@ namespace RepoQuiz.Migrations
                 // The other solution (exploring), will be to move all the Random classes into one method,
                 // because it is the .Next method that creates a fresh pseudo apparently, not the instantiation
                 //of the Random class as I would have suspected. 
-                Thread.Sleep(1000);
+                //Thread.Sleep(1000);
             }
             
             //  This method will be called after migrating to the latest version.

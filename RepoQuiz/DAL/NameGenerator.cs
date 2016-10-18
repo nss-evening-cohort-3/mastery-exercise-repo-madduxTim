@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using RepoQuiz.Models;
+using System.Threading;
 
 namespace RepoQuiz.DAL
 {
@@ -15,6 +16,7 @@ namespace RepoQuiz.DAL
         public string[] LastNames = new string[17] { "Obama", "Bush", "Clinton", "Reagan", "Carter", "Ford", "Nixon", "Johnson", "Kennedy", "Eisenhower", "Truman", "Roosevelt", "Herbert", "Coolidge", "Harding", "Wilson", "Taft" };
         public string[] Majors = new string[8] { "Economics", "Literature", "Political Science", "Journalism", "Pre-Med", "Physics", "Sociology", "Biology" };
 
+        Random random = new Random();
         public Student studentBuilder()
         {
             Student student = new Student();
@@ -34,22 +36,22 @@ namespace RepoQuiz.DAL
             //THIS APPROACH WAS NOT WORKING FOR SOME REASON... 
         public string CreateFirstName()
         {
-            Random randomFirst = new Random();
-            int FirstNameNum = randomFirst.Next(0, FirstNames.Length - 1);
+            Thread.Sleep(100);
+            int FirstNameNum = random.Next(0, FirstNames.Length - 1);
             string FirstName = FirstNames[FirstNameNum];
             return FirstName;
         }
         public string CreateLastName()
         {
-            Random randomLast = new Random();
-            int LastNameNum = randomLast.Next(0, LastNames.Length - 1);
+            Thread.Sleep(100);
+            int LastNameNum = random.Next(0, LastNames.Length - 1);
             string LastName = LastNames[LastNameNum];
             return LastName;
         }
         public string CreateMajor()
         {
-            Random randomMajor = new Random();
-            int MajorNumber = randomMajor.Next(0, Majors.Length - 1);
+            Thread.Sleep(100);
+            int MajorNumber = random.Next(0, Majors.Length - 1);
             string Major = Majors[MajorNumber];
             return Major;
         }
